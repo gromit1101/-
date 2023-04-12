@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>소개팅 웹사이트</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="script.js"></script>
+    <script src="style.css"></script>
+</head>
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width: 300px;
+  height: 400px;
+  margin: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card img {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.card:hover img {
+  transform: scale(1.2);
+}
+
+.card .info {
+  padding: 20px;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card .name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card .desc {
+  font-size: 16px;
+  color: #666;
+}
+header {
+      background-color: #FFB6C1;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 36px;
+      font-weight: bold;
+    }
+    header h1 {
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+  display: block;
+  padding: 20px;
+  background-color: #ff6b6b;
+  border-radius: 10px 0 0 10px;
+}
+#chat-window {
+  position: fixed;
+  bottom: 20px;
+  right: -300px;
+  width: 300px;
+  height: 400px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: right 0.3s ease-out;
+}
+
+#chat-window.show {
+  right: 20px;
+}
+
+#chat-log {
+  height: 80%;
+  overflow-y: scroll;
+  padding: 10px;
+}
+
+#chat-input {
+  height: 20%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+#chat-input input[type="text"] {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+#chat-input button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#chat-input button:hover {
+  background-color: #0069d9;
+}
+.chat-btn {
+  background-color: #ff80b3;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  height: 50px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 50px;
+  z-index: 1;
+  transition: all 0.2s ease-in-out;
+}
+
+.chat-btn:hover {
+  background-color: #ff69b4;
+  transform: scale(1.1);
+}
+
+</style>
+<body>
+    <button id="chat-button">채팅</button>
+    <div id="chat-window">
+        <div id="chat-log"></div>
+        <div id="chat-input">
+            <input type="text" id="chat-message">
+            <button id="send-button">보내기</button>
+        </div>
+    </div>
+
+
+	<header>
+		<h1>소개팅 웹사이트</h1>
+		<nav>
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About Us</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<section class="cards">
+			<div class="card">
+				<div class="imgBx">
+					<img src="https://source.unsplash.com/1600x900/?woman" alt="woman">
+				</div>
+				<div class="details">
+					<h2>김지수</h2>
+					<p>안녕하세요. 저는 축구를 좋아하고 여행을 다니는 것을 즐기는 26살 여성입니다.</p>
+                    <button class="chat-btn">채팅하기</button>
+
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="imgBx">
+					<img src="https://source.unsplash.com/1600x900/?man" alt="man">
+				</div>
+				<div class="details">
+					<h2>박준서</h2>
+					<p>안녕하세요. 저는 음악감상과 영화보는 것을 좋아하는 29살 남성입니다.</p>
+                    <button class="chat-btn">채팅하기</button>
+
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="imgBx">
+					<img src="https://source.unsplash.com/1600x900/?woman" alt="woman">
+				</div>
+				<div class="details">
+					<h2>이다은</h2>
+					<p>안녕하세요. 저는 요리와 책읽기를 좋아하는 24살 여성입니다.</p>
+                    <button class="chat-btn">채팅하기</button>
+
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<p>© 2023 by 소개팅 웹사이트. Proudly created with OpenAI.</p>
+	</footer>
+    <script>
+        const chatButton = document.getElementById('chat-button');
+        const chatWindow = document.getElementById('chat-window');
+
+        chatButton.addEventListener('click', function () {
+            chatWindow.classList.toggle('show');
+        });
+
+    </script>
+</body>
+</html>
